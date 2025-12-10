@@ -1,0 +1,70 @@
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    background: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+.calculator {
+    width: 320px;
+    background: #222;
+    padding: 20px;
+    border-radius: 15px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.4);
+}
+
+#display {
+    width: 94%;
+    height: 60px;
+    font-size: 2rem;
+    text-align: right;
+    padding: 10px;
+    border: none;
+    border-radius: 10px;
+    margin-bottom: 15px;
+    background: #100;
+    color: #fff;
+}
+
+/* Buttons layout */
+.buttons {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 10px;
+}
+
+/* Normal button */
+.btn {
+    padding: 20px;
+    font-size: 1.2rem;
+    border: none;
+    background: #444;
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+/* Hover effect only */
+.btn:hover {
+    background: #555;
+    box-shadow: 0 0 10px rgba(255,255,255,0.2);
+}
+
+/* = button */
+.equal {
+    grid-row: span 2;
+    background: #ff9500;
+}
+
+.equal:hover {
+    background: #e08300;
+    box-shadow: 0 0 12px rgba(255,149,0,0.4);
+}
+
+/* 0 button */
+.zero {
+    grid-column: span 2;
+}
