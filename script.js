@@ -1,32 +1,59 @@
-let display = document.getElementById("display");
+const galleryItems = document.querySelectorAll('.gallery-item');
+const lightbox = document.querySelector('.lightbox');
+const lightboxImg = document.querySelector('.lightbox-image');
+const closeBtn = document.querySelector('.close');
+const nextBtn = document.querySelector('.next');
+const prevBtn = document.querySelector('.prev');
 
-function append(value) {
-    display.value += value;
-}
+let currentIndex = 0;
 
-function clearDisplay() {
-    display.value = "";
-}
-
-function calculate() {
-    try {
-        display.value = eval(display.value);
-    } catch {
-        display.value = "Error";
-    }
-}
-
-// BONUS: Keyboard Support
-document.addEventListener("keydown", (e) => {
-    const key = e.key;
-
-    if (!isNaN(key) || "+-*/.".includes(key)) {
-        append(key);
-    } else if (key === "Enter") {
-        calculate();
-    } else if (key === "Backspace") {
-        display.value = display.value.slice(0, -1);
-    } else if (key === "Escape") {
-        clearDisplay();
-    }
+// Open lightbox
+galleryItems.forEach((img, index) => {
+    img.addEventListener('click', () => {
+        currentIndex = index;
+        showImage();
+        lightbox.style.display = "flex";
+    });
 });
+
+// Show image
+function showImage() {
+    lightboxImg.src = galleryItems[currentIndex].src;
+}
+
+// Navigation
+nextBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex + 1) % galleryItems.length;
+    showImage();
+});
+
+prevBtn.addEventListener('click', () => {
+    currentIndex = (currentIndex - 1 + galleryItems.length) % galleryItems.length;
+    showImage();
+});
+
+// Close lightbox
+closeBtn.addEventListener('click', () => {
+    lightbox.style.display = "none";
+});
+ 
+// Filters
+const filterBtns = document.querySelectorAll('.filter-btn');
+
+filterBtns.forEach(btn => {
+    btn.addEventListener('click', () => {
+        document.querySelector('.filter-btn.active').classList.remove('active');
+        btn.classList.add('active');
+
+        let filter = btn.dataset.filter;
+
+        galleryItems.forEach(item => {
+            if (filter === "all" || item.classList.contains(filter)) {
+                item.style.display = "block";
+            } else {
+                item.style.display = "none";
+            }
+        });
+    });
+});
+

@@ -3,36 +3,38 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Calculator</title>
+    <title>Image Gallery</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="calculator">
-    <input type="text" id="display" disabled>
+<h2 class="title">Image Gallery</h2>
 
-    <div class="buttons">
-        <button class="btn" onclick="clearDisplay()">C</button>
-        <button class="btn" onclick="append('/')">÷</button>
-        <button class="btn" onclick="append('*')">×</button>
-        <button class="btn" onclick="append('-')">−</button>
+<!-- Filter Buttons -->
+<div class="filters">
+    <button class="filter-btn active" data-filter="all">All</button>
+    <button class="filter-btn" data-filter="nature">Nature</button>
+    <button class="filter-btn" data-filter="city">City</button>
+    <button class="filter-btn" data-filter="animals">Animals</button>
+</div>
 
-        <button class="btn" onclick="append('7')">7</button>
-        <button class="btn" onclick="append('8')">8</button>
-        <button class="btn" onclick="append('9')">9</button>
-        <button class="btn" onclick="append('+')">+</button>
+<!-- Gallery -->
+<div class="gallery">
+    <img src="Nature.jpg" class="gallery-item nature">
+    <img src="Animal.jpg" class="gallery-item animals">
+    <img src="City.jpg" class="gallery-item city">
+    <img src="Nature1.jpg" class="gallery-item nature">
+    <img src="City1.jpg" class="gallery-item city">
+    <img src="Animal1.jpg" class="gallery-item animals">
+</div>
 
-        <button class="btn" onclick="append('4')">4</button>
-        <button class="btn" onclick="append('5')">5</button>
-        <button class="btn" onclick="append('6')">6</button>
-        <button class="btn equal" onclick="calculate()">=</button>
-
-        <button class="btn" onclick="append('1')">1</button>
-        <button class="btn" onclick="append('2')">2</button>
-        <button class="btn" onclick="append('3')">3</button>
-        <button class="btn" onclick="append('0')">0</button>
-
-        <button class="btn zero" onclick="append('.')">.</button>
+<!-- Lightbox -->
+<div class="lightbox">
+    <span class="close">&times;</span>
+    <img class="lightbox-image">
+    <div class="navigation">
+        <span class="prev">&#10094;</span>
+        <span class="next">&#10095;</span>
     </div>
 </div>
 
